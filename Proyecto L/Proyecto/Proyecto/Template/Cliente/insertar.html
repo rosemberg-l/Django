@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='{% static "css/bootstrap.css" %}'>
+    <script src='{% static "js/bootstrap.js" %}'></script>
+    <title>Proyecto</title>
+</head>
+
+<body>
+    <div class="text-center" style="padding:3rem;">
+      <h1><em>Formulario de Registro de Cliente</em></h1> 
+    </div>
+    <div class="container">
+        <form class="row g-3" method="post" style="background-color:rgb(232, 246, 255) ; border-radius:2rem;">
+        {% csrf_token %}
+            <div class="col-md-4">
+                <label for="inputEmail4" class="form-label">Nombre:</label>
+                <input type="text" name="nombre" class="form-control" id="Nombre">
+            </div>
+            <div class="col-md-4">
+                <label for="inputPassword4" class="form-label">Apellido:</label>
+                <input type="text" name="apellido" class="form-control" id="Apellido">
+            </div>
+            <div class="col-md-4">
+                <label for="inputAddress" class="form-label">Edad:</label>
+                <input type="number" name="edad" class="form-control" id="Edad">
+            </div>
+            <div class="col-md-6">
+                <label for="inputAddress2" class="form-label">Celular:</label>
+                <input type="number" name="celular" class="form-control" id="Celular">
+            </div>
+            <div class="col-md-6">
+                <label for="inputCity" class="form-label">Fecha de Nacimiento:</label>
+                <input type="date" name="fech_nac" class="form-control" id="Fecha_naci">
+            </div>
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Email:</label>
+                <input type="email" name="email" class="form-control" id="email">
+            </div>
+            <div class="col-md-4">
+                <label for="inputState" class="form-label">Genero</label>
+                <select id="inputState" name="genero" class="form-select">
+                    <option selected>Seleccione un Genero</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="femenino">Femenino</option>
+                    <option value="no_binary">No Binario</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Cedula:</label>
+                <input type="number" name="cedula" class="form-control" id="Cedula">
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-warning center-block;background-color:rgb(6, 6, 6)">Guardar</button>
+            </div>
+            {% if messages %}
+            {% for mensaje in messages %}
+                <h2 style="color:rgb(6, 6, 6); text-align: center; box-shadow: inset;">{{mensaje}}</h2>
+            {% endfor %}
+            {% endif %}
+            
+        </form>
+    </div>
+
+</body>
+
+</html>
