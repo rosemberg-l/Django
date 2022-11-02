@@ -12,3 +12,11 @@ class Cliente(models.Model):
     cedula = models.CharField(max_length=11)
     class Meta:
         db_table='clientes'
+
+class Factura(models.Model):
+    precio = models.BigIntegerField()
+    fechacompra = models.CharField(max_length=100)
+    cliente = models.ForeignKey(Cliente ,on_delete=models.PROTECT)
+    class Meta:
+        db_table= "factura_cliente"
+

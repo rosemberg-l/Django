@@ -15,8 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Proyecto.views import index,ListadoClientes,ClienteInsertar,Borrarcliente
-
+from Proyecto.views import index,ListadoClientes,ClienteInsertar,Borrarcliente,Actualizarcliente
+from Proyecto.views import FacturaInsertar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +24,6 @@ urlpatterns = [
     path('Cliente/listado/',ListadoClientes),
     path('Cliente/insertar1/',ClienteInsertar),
     path('Cliente/borrar/<int:id>',Borrarcliente),
+    path('Cliente/actualizar/<int:id>',Actualizarcliente),
+    path('Factura/insertar/',FacturaInsertar),
 ]

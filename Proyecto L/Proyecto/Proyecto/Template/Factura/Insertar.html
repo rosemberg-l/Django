@@ -1,0 +1,54 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href='{% static "css/bootstrap.css" %}'>
+    <script src='{% static "js/bootstrap.js" %}'></script>
+</head>
+<body>
+    <div class="text-center" style="padding:3rem;">
+      <h1><em>Registrar factura</em></h1> 
+    </div>
+    <div class="container">
+        <form class="row g-3" method="post" style="background-color:rgb(232, 246, 255) ; border-radius:2rem;">
+        {% csrf_token %}
+            <div class="col-md-4">
+                <label for="inputEmail4" class="form-label">Precio:</label>
+                <input type="text" name="Precio" class="form-control" id="Precio">
+            </div>
+            <div class="col-md-4">
+                <label for="inputPassword4" class="form-label">Apellido:</label>
+                <input type="date" name="fechacompra" class="form-control" id="fechacompra">
+            </div>
+            <div class="col-md-4">
+                <label for="" class="form-label">Listado de clientes:</label>
+                <select name="cliente" class="form-control" id="">
+                    {% for c in clientes %}
+                    <option value="{{c.id}}">{{c.nombre}} {{c.apellido}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            
+            <div class="text-center">
+                <button type="submit" class="btn btn-warning center-block;background-color:rgb(6, 6, 6)">Guardar</button>
+            </div>
+            {% if messages %}
+            {% for mensaje in messages %}
+                <h2 style="color:rgb(6, 6, 6); text-align: center; box-shadow: inset;">{{mensaje}}</h2>
+            {% endfor %}
+            {% endif %}
+            
+        </form>
+    </div>
+
+</body>
+
+    
+
+</html>
